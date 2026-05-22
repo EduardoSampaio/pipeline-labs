@@ -1,0 +1,35 @@
+name: "Estrutura de Diretorios e Arquivos"
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: "18"
+
+jobs:
+  demostrar-estrutura:
+    name: "Demonstrar Estrutura de Diretórios e Arquivos"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout do código"
+        uses: actions/checkout@v3
+
+      - name: "Exibir estrutura de diretórios e arquivos"
+        run: |
+          echo "Estrutura de Diretórios e Arquivos:"
+          tree -L 2
+
+      - name: "Elementos obrigatórios workflow"
+        run: |
+          echo "Elementos Obrigatórios:"
+          echo "- .github/workflows/pipeline.yml"
+          echo "- README.md"
+          echo "- src/"
+          echo "- tests/"
+
+      - name: Variáveis de ambiente
+        run: |
+          echo "Variáveis de Ambiente:"
+          echo "NODE_VERSION: ${{ env.NODE_VERSION }}"
